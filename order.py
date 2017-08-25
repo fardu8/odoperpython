@@ -1,10 +1,15 @@
 class order():
     def __init__(self):
         self.ord={}
+        self.price=0
     def add(self,s,amount):
         self.ord[s]=amount
     def show(self):
-        print(self.ord)
+        for i,j in self.ord.items():
+            print(i,j)
+    def __setitem__(self,s,n):
+        self.ord[s]=n
+        self.price+=n*veg.mymenu[s]
         
     
 class menu():
@@ -17,26 +22,26 @@ class menu():
             print(self.mymenu)
     def __add__(self,s):
             self.mymenu[s[0]]=s[1]
+            return self
             
             
 veg=menu()
-#non=menu()
-veg + ["dosa",50]
-#veg.add("sfe",345)
+veg + ["dosa",50] + ("chapathi",40)
 veg.add("vada",20)
 veg.add("idly",35)
 veg.add("idiyappam",40)
 veg.add("pongal",30)
-#non.add("idly",30)
-#non.show()
 x=order()
 while True:
-#    if str(input("")) is exit
-#        break
     veg.show()
     a=str(input("enter item name or exit:"))
     if a=="exit":
         break
-    x.add(a,int(input("enter amount:")))
-
+    elif a not in veg.mymenu:
+        print("item is not there in menu")
+        continue
+    x[a]=int(input("enter quantity :"))
+print("your order : ")
 x.show()
+print("total amount : ",x.price)
+
