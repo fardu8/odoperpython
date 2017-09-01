@@ -19,8 +19,8 @@ f.a=int(input("enter the first number in the series : "))
 f.b=int(input("enter the second number in the series : "))
 n=int(input("enter the number of terms needed : "))
 x=iter(f)
-for z in x:
+while True:
     if c>n:
-        break
-    print(z)
-    c+=1        
+        break      
+    print(next(x))
+    c+=1
